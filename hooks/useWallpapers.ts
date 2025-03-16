@@ -2,9 +2,20 @@ export interface Wallpaper {
   url: string;
   name: string;
 }
-
+function shuffleArray<T>(array: T[]): T[] {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+}
 export function useWallpapers():Wallpaper[] {
-  return [
+    const wallpapers=[
+    {
+        url:"https://ideogram.ai/assets/image/lossless/response/emq4cQaSSJCXE0Fey1X3HA",
+        name:"WebDevGuides"
+    },
     {
       url: "https://ideogram.ai/assets/progressive-image/balanced/response/sjmQFeb4Rn-9UFc-hBi9Lw",
       name: "Heritage",
@@ -66,4 +77,5 @@ export function useWallpapers():Wallpaper[] {
       name: "Mountain",
     },
   ];
+  return shuffleArray(wallpapers);
 }
